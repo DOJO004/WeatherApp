@@ -12,7 +12,7 @@ export default function getCurrentWeather(lat:number, lon:number) {
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
-        throw error; // 重新拋出錯誤，以便調用方處理
+        throw error;
       });
   }
   

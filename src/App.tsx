@@ -66,7 +66,6 @@ function App() {
         }
       );
     } else {
-      // Geolocation is not supported by the browser
       console.error("Geolocation is not supported by this browser.");
     }
   };
@@ -85,14 +84,13 @@ function App() {
       setCurrentTime(new Date());
     }, 1000); // 每秒更新一次
 
-    return () => clearInterval(interval); // 清除 interval
-  }, []); // useEffect 只在組件 mount 時執行一次
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="px-4 mt-12 max-w-md mx-auto">
       {weatherData ? (
         <>
-          {/* address */}
           <div className=" flex justify-between items-end">
             <div className="flex gap-4 mt-4  items-center  ">
               <i className="fa-solid fa-location-dot"></i>
@@ -100,18 +98,15 @@ function App() {
                 {weatherData.name} , {weatherData.sys?.country}
               </p>
             </div>
-            {/* date */}
             <div className="flex gap-4 items-center">
               <i className="fa-regular fa-calendar"></i>
               <p>{new Date().toLocaleDateString()}</p>
             </div>
           </div>
-          {/* temp */}
           <p className="text-7xl text-center mt-4">
             {weatherData.main?.temp}°C
           </p>
 
-          {/* time */}
           <div className="flex gap-4 items-center mt-4 justify-center">
             <i className="fa-regular fa-clock fa-xl"></i>
             <p>{currentTime.toLocaleTimeString()}</p>
